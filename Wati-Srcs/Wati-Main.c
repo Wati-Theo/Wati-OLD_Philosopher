@@ -6,7 +6,7 @@
 /*   By: tschlege <tschlege@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 17:45:28 by tschlege          #+#    #+#             */
-/*   Updated: 2022/07/16 20:54:58 by tschlege         ###   ########lyon.fr   */
+/*   Updated: 2022/07/16 22:41:00 by tschlege         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,5 @@ int	main(int argc, char *argv[])
 		printf("ERR, Nb of ARG\n");
 		return (1);
 	}
-	wati_parser(argc, argv);
+	check_if_digit(argc, argv);
 }

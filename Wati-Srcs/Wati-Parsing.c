@@ -6,11 +6,13 @@
 /*   By: tschlege <tschlege@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 17:48:52 by tschlege          #+#    #+#             */
-/*   Updated: 2022/07/16 21:07:50 by tschlege         ###   ########lyon.fr   */
+/*   Updated: 2022/07/16 22:43:46 by tschlege         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Wati-Includes/Wati_Philosopher.h"
+
+void	
 
 void	check_if_valid_nb(int argc, char **argv)
 {
@@ -50,9 +52,4 @@ void	check_if_digit(int argc, char **argv)
 		j++;
 	}
 	check_if_valid_nb(argc, argv);
-}
-
-void	wati_parser(int argc, char *argv[])
-{
-	check_if_digit(argc, argv);
 }
