@@ -6,13 +6,11 @@
 /*   By: tschlege <tschlege@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 17:48:52 by tschlege          #+#    #+#             */
-/*   Updated: 2022/07/16 22:43:46 by tschlege         ###   ########lyon.fr   */
+/*   Updated: 2022/07/18 17:57:25 by tschlege         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Wati-Includes/Wati_Philosopher.h"
-
-void	
+#include "../Wati-Includes/Wati_Philosopher.h"	
 
 void	check_if_valid_nb(int argc, char **argv)
 {
@@ -24,11 +22,12 @@ void	check_if_valid_nb(int argc, char **argv)
 		if (ft_atoi(argv[i]) > 2147483647 || ft_atoi(argv[i]) < -2147483648
 			|| ft_atoi(argv[i]) < 1)
 		{
-			printf("Invalid number for the %d Arg\n", i);
+			printf("Invalid Arg\n");
 			return ;
 		}
 		i++;
 	}
+	printf("Parsing OK\n");
 }
 
 void	check_if_digit(int argc, char **argv)
@@ -44,7 +43,7 @@ void	check_if_digit(int argc, char **argv)
 		{
 			if (!ft_isdigit(argv[j][i]))
 			{
-				printf("ERR, Arguments are not valid\n");
+				printf("Invalid Arg\n");
 				return ;
 			}
 			i++;

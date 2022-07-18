@@ -6,7 +6,7 @@
 /*   By: tschlege <tschlege@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 20:35:53 by tschlege          #+#    #+#             */
-/*   Updated: 2022/07/16 20:40:51 by tschlege         ###   ########lyon.fr   */
+/*   Updated: 2022/07/18 17:59:32 by tschlege         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ int	ft_isdigit(int c)
 	return (0);
 }
 
-int	ft_atoi(const char *str)
+long long	int	ft_atoi(const char *str)
 {
-	int	i;
-	int	res;
-	int	neg;
+	int				i;
+	long long int	res;
+	int				neg;
 
 	i = 0;
 	res = 0;
