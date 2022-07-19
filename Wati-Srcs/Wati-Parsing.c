@@ -6,7 +6,7 @@
 /*   By: tschlege <tschlege@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 17:48:52 by tschlege          #+#    #+#             */
-/*   Updated: 2022/07/18 18:50:37 by tschlege         ###   ########lyon.fr   */
+/*   Updated: 2022/07/19 14:53:01 by tschlege         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	check_if_valid_nb(int argc, char **argv, t_data *data)
 		i++;
 	}
 	printf("Parsing OK\n");
-	init_data(argv, data);
+	init_data_and_forchetta(argv, data);
 }
 
 void	check_if_digit(int argc, char **argv, t_data *data)
