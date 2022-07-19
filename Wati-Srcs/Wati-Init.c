@@ -6,7 +6,7 @@
 /*   By: tschlege <tschlege@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 17:53:58 by tschlege          #+#    #+#             */
-/*   Updated: 2022/07/19 21:01:13 by tschlege         ###   ########lyon.fr   */
+/*   Updated: 2022/07/20 00:36:00 by tschlege         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void	init_philo(t_data *data)
 		return ;
 	while (i < data->nb_philo)
 	{
-		printf("i=%d\n", i);
 		pthread_create(&data->philo[i].thread, NULL,
 			&think_philo, &data->philo[i]);
 		data->philo[i].data = data;

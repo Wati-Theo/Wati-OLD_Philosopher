@@ -6,7 +6,7 @@
 /*   By: tschlege <tschlege@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 19:27:09 by tschlege          #+#    #+#             */
-/*   Updated: 2022/07/19 23:08:09 by tschlege         ###   ########lyon.fr   */
+/*   Updated: 2022/07/20 00:40:33 by tschlege         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +29,31 @@ void	snitching(t_philo *philo, int choice)
 	pthread_mutex_unlock(&philo->data->is_snitching);
 }
 
+void	*sleep_philo(t_philo *philo)
+{
+	usleep(philo->data->time_to_sleep);
+	snitching(philo, 3);
+	while (1)
+	{
+		usleep(200);
+		think_philo(philo);
+	}
+	return (think_philo(philo));
+}
+
+
 void	*eat_philo(t_philo *philo)
 {
-	pthread_mutex_lock(&philo->data->forks[philo->id - 1]) && 
+	pthread_mutex_lock(&philo->data->forks[1]) && 
 		pthread_mutex_lock(&philo->data->forks[philo->id]);
 	snitching(philo, 2);
+	snitching(philo, 2);
 	snitching(philo, 3);
-	usleep(200);
-	pthread_mutex_unlock(&philo->data->forks[philo->id - 1]) && 
-		pthread_mutex_unlock(&philo->data->forks[philo->id]);
-	return (think_philo(philo));
+	usleep(philo->data->time_to_eat);
+	pthread_mutex_unlock(&philo->data->forks[1]) && 
+		pthread_mutex_unlock(&philo->data->forks[1]);
+	sleep_philo(philo);
+	return (sleep_philo(philo));
 }
 
 void	*think_philo(void *arg)
@@ -47,7 +62,5 @@ void	*think_philo(void *arg)
 
 	philo = arg;
 	snitching(philo, 1);
-	eat_philo(philo);
-	eat_philo(philo);
 	return (eat_philo(philo));
 }
