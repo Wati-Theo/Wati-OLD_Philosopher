@@ -6,7 +6,7 @@
 /*   By: tschlege <tschlege@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 17:53:58 by tschlege          #+#    #+#             */
-/*   Updated: 2022/07/20 00:36:00 by tschlege         ###   ########lyon.fr   */
+/*   Updated: 2022/07/20 16:08:57 by tschlege         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ void	init_philo(t_data *data)
 		usleep(30);
 		i++;
 	}
+	while (1)
+		usleep(1);
 }
 
 void	init_data_and_forchetta(char *argv[], t_data *data)

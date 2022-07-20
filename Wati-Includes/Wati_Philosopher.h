@@ -6,7 +6,7 @@
 /*   By: tschlege <tschlege@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 17:45:25 by tschlege          #+#    #+#             */
-/*   Updated: 2022/07/19 18:56:09 by tschlege         ###   ########lyon.fr   */
+/*   Updated: 2022/07/20 00:48:50 by tschlege         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,6 @@ int				ft_isdigit(int c);
 long long int	ft_atoi(const char *str);
 void			init_data_and_forchetta(char *argv[], t_data *data);
 void			*think_philo(void *arg);
+void			*sleep_philo(t_philo *philo);
+
 #endif
