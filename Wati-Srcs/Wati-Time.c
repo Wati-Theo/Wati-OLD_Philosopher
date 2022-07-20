@@ -6,7 +6,7 @@
 /*   By: tschlege <tschlege@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 16:59:41 by tschlege          #+#    #+#             */
-/*   Updated: 2022/07/20 20:46:16 by tschlege         ###   ########lyon.fr   */
+/*   Updated: 2022/07/20 22:29:15 by tschlege         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 unsigned int	get_time_difference(struct timeval old_time)
 {
 	struct timeval	current_time;
-	unsigned int	time_i;
+	unsigned int	time_current;
 	unsigned int	time_j;
 
 	gettimeofday(&current_time, NULL);
