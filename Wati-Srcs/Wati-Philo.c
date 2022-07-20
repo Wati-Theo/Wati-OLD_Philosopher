@@ -6,7 +6,7 @@
 /*   By: tschlege <tschlege@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 19:27:09 by tschlege          #+#    #+#             */
-/*   Updated: 2022/07/20 16:09:16 by tschlege         ###   ########lyon.fr   */
+/*   Updated: 2022/07/20 20:28:54 by tschlege         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,35 +16,43 @@ void	snitching(t_philo *philo, int choice)
 {
 	pthread_mutex_lock(&philo->data->is_snitching);
 	if (choice == 1)
-		printf("timestamp_in_ms %d is thinking\n", philo->id);
+		printf("%d %d is thinking\n",
+			get_time_difference(philo->data->start_time), philo->id);
 	else if (choice == 2)
-		printf("timestamp_in_ms %d has taken a fork\n", philo->id);
+		printf("%d %d has taken a fork\n",
+			get_time_difference(philo->data->start_time), philo->id);
 	else if (choice == 3)
-		printf("timestamp_in_ms %d is eating\n", philo->id);
+		printf("%d %d is eating\n",
+			get_time_difference(philo->data->start_time), philo->id);
 	else if (choice == 4)
-		printf("timestamp_in_ms %d is sleeping\n", philo->id);
+		printf("%d %d is sleeping\n",
+			get_time_difference(philo->data->start_time), philo->id);
 	else if (choice == 5)
-		printf("timestamp_in_ms %d died\n", philo->id);
+		printf("%d %d died\n",
+			get_time_difference(philo->data->start_time), philo->id);
 	pthread_mutex_unlock(&philo->data->is_snitching);
 }
 
 void	*sleep_philo(t_philo *philo)
 {
 	usleep(philo->data->time_to_sleep);
-	snitching(philo, 3);
+	snitching(philo, 4);
 	return (think_philo(philo));
 }
 
 void	*eat_philo(t_philo *philo)
 {
-	pthread_mutex_lock(&philo->data->forks[1]) && 
-		pthread_mutex_lock(&philo->data->forks[1]);
+	pthread_mutex_lock(&philo->data->forks[philo->id]);
+	if (philo->id == 0)
+		pthread_mutex_lock(&philo->data->forks[philo->data->nb_philo - 1]);
+	else
+		pthread_mutex_lock(&philo->data->forks[philo->id - 1]);
 	snitching(philo, 2);
 	snitching(philo, 2);
 	snitching(philo, 3);
 	usleep(philo->data->time_to_eat);
-	pthread_mutex_unlock(&philo->data->forks[1]) && 
-		pthread_mutex_unlock(&philo->data->forks[1]);
+	pthread_mutex_unlock(&philo->data->forks[philo->id - 1]);
+	pthread_mutex_unlock(&philo->data->forks[philo->id]);
 	return (sleep_philo(philo));
 }
 

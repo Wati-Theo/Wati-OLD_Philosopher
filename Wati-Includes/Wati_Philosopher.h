@@ -6,7 +6,7 @@
 /*   By: tschlege <tschlege@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 17:45:25 by tschlege          #+#    #+#             */
-/*   Updated: 2022/07/20 00:48:50 by tschlege         ###   ########lyon.fr   */
+/*   Updated: 2022/07/20 18:58:50 by tschlege         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <pthread.h>
 
 typedef struct data	t_data;
+typedef struct timeval t_time;
 
 typedef struct s_philo
 {
@@ -39,6 +40,7 @@ typedef struct data
 	pthread_mutex_t	is_snitching;
 	pthread_mutex_t	*forks;
 	t_philo			*philo;
+	t_time			start_time;
 }	t_data;
 
 void			check_if_digit(int argc, char *argv[], t_data *data);
@@ -47,5 +49,7 @@ long long int	ft_atoi(const char *str);
 void			init_data_and_forchetta(char *argv[], t_data *data);
 void			*think_philo(void *arg);
 void			*sleep_philo(t_philo *philo);
+void			get_time_stamp(void);
+unsigned int	get_time_difference(struct timeval old_time);
 
 #endif

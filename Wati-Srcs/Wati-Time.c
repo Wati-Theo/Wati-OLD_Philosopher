@@ -1,32 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Wati-Main.c                                        :+:      :+:    :+:   */
+/*   Wati-Time.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tschlege <tschlege@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/16 17:45:28 by tschlege          #+#    #+#             */
-/*   Updated: 2022/07/20 19:05:44 by tschlege         ###   ########lyon.fr   */
+/*   Created: 2022/07/20 16:59:41 by tschlege          #+#    #+#             */
+/*   Updated: 2022/07/20 19:00:20 by tschlege         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Wati-Includes/Wati_Philosopher.h"
 
-int	main(int argc, char *argv[])
+unsigned int	get_time_difference(struct timeval old_time)
 {
-	t_data	data;
+	struct timeval	current_time;
+	unsigned int	time_i;
+	unsigned int	time_j;
 
-	if (argc < 5 || argc > 6)
-	{
-		printf("ERR, Nb of ARG\n");
-		return (1);
-	}
-	data.nb_philo = 0;
-	data.time_to_die = 0;
-	data.time_to_eat = 0;
-	data.time_to_sleep = 0;
-	data.nb_eat_max = -42;
-	if (argc == 6)
-		data.nb_eat_max = 0;
-	check_if_digit(argc, argv, &data);
+	gettimeofday(&current_time, NULL);
+	time_i = current_time.tv_sec * (uint64_t)1000 + current_time.tv_usec / 1000;
+	time_j = old_time.tv_sec * (uint64_t)1000 + old_time.tv_usec / 1000;
+	return (time_i - time_j);
 }

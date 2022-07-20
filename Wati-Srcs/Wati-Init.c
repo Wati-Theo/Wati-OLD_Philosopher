@@ -6,7 +6,7 @@
 /*   By: tschlege <tschlege@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 17:53:58 by tschlege          #+#    #+#             */
-/*   Updated: 2022/07/20 16:08:57 by tschlege         ###   ########lyon.fr   */
+/*   Updated: 2022/07/20 19:05:26 by tschlege         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,6 @@ void	init_data_and_forchetta(char *argv[], t_data *data)
 		pthread_mutex_init(&data->forks[i], NULL);
 		i++;
 	}
+	gettimeofday(&data->start_time, NULL);
 	init_philo(data);
 }
