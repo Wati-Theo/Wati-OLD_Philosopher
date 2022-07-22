@@ -6,7 +6,7 @@
 /*   By: tschlege <tschlege@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 17:45:25 by tschlege          #+#    #+#             */
-/*   Updated: 2022/07/20 18:58:50 by tschlege         ###   ########lyon.fr   */
+/*   Updated: 2022/07/22 18:04:11 by tschlege         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,14 @@
 # include <sys/time.h>
 # include <pthread.h>
 
-typedef struct data	t_data;
-typedef struct timeval t_time;
+typedef struct data		t_data;
+typedef struct timeval	t_time;
 
 typedef struct s_philo
 {
 	pthread_t	thread;
 	int			id;
+	int			nb_eat;
 	t_data		*data;
 }	t_philo;
 
@@ -51,5 +52,6 @@ void			*think_philo(void *arg);
 void			*sleep_philo(t_philo *philo);
 void			get_time_stamp(void);
 unsigned int	get_time_difference(struct timeval old_time);
-
+void			wati_usleep(unsigned int sleep_time);
+int				check_can_eat(t_data *data);
 #endif

@@ -6,7 +6,7 @@
 /*   By: tschlege <tschlege@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 17:53:58 by tschlege          #+#    #+#             */
-/*   Updated: 2022/07/20 19:05:26 by tschlege         ###   ########lyon.fr   */
+/*   Updated: 2022/07/22 17:54:12 by tschlege         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,18 @@ void	init_philo(t_data *data)
 			&think_philo, &data->philo[i]);
 		data->philo[i].data = data;
 		data->philo[i].id = i + 1;
+		data->philo->nb_eat = 0;
 		usleep(30);
 		i++;
 	}
 	while (1)
+	{
+		i = -1;
+		if (data->nb_eat_max != 42)
+			if (!check_can_eat(data))
+				return ;
 		usleep(1);
+	}
 }
 
 void	init_data_and_forchetta(char *argv[], t_data *data)
