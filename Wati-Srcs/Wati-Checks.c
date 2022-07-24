@@ -6,7 +6,7 @@
 /*   By: tschlege <tschlege@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 17:46:58 by tschlege          #+#    #+#             */
-/*   Updated: 2022/07/24 15:32:38 by tschlege         ###   ########lyon.fr   */
+/*   Updated: 2022/07/25 00:12:52 by tschlege         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	freebox(t_data *data)
 	{
 		pthread_detach(data->philo[i].thread);
 		pthread_mutex_destroy(&data->forks[i]);
+		i++;
 	}
 	pthread_mutex_destroy(&data->is_snitching);
 }
@@ -36,25 +37,27 @@ int	check_nb_eat(t_data *data)
 	count = 0;
 	while (i < data->nb_philo)
 	{
+		if ((int)(get_time_difference(data->start_time)
+			- (int)data->philo[i].last_meal) > data->time_to_die)
+			return (1);
 		if (data->philo[i].nb_eat >= data->nb_eat_max)
 			count++;
 		i++;
 	}
-	// printf("count %d nb_philo %d\n", count, data->nb_philo);
 	if (count != data->nb_philo)
 		return (1);
 	return (0);
 }
 
-void	check_can_eat(t_data *data)
+int	check_can_eat(t_data *data)
 {
 	int	i;
 
 	i = 0;
 	if (!check_nb_eat(data))
 	{
-		printf("\n\ntout mangé\n\n");
 		freebox(data);
+		return (0);
 	}
-	return ;
+	return (1);
 }
