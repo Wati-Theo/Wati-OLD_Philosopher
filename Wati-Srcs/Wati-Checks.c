@@ -6,7 +6,7 @@
 /*   By: tschlege <tschlege@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 17:46:58 by tschlege          #+#    #+#             */
-/*   Updated: 2022/07/25 00:12:52 by tschlege         ###   ########lyon.fr   */
+/*   Updated: 2022/07/25 00:55:52 by tschlege         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,27 @@ void	freebox(t_data *data)
 	pthread_mutex_destroy(&data->is_snitching);
 }
 
+int	check_if_dead(t_data *data)
+{
+	int	i;
+
+	i = 0;
+	while (i < data->nb_philo)
+	{
+		if ((get_time_difference(data->start_time)
+				- data->philo[i].last_meal) > (unsigned int)data->time_to_die)
+		{
+			pthread_mutex_lock(&data->is_snitching);
+			printf("%d %d died\n",
+				get_time_difference(data->start_time), i + 1);
+			pthread_mutex_unlock(&data->is_snitching);
+			return (0);
+		}
+		i++;
+	}
+	return (1);
+}
+
 int	check_nb_eat(t_data *data)
 {
 	int	i;
@@ -37,9 +58,6 @@ int	check_nb_eat(t_data *data)
 	count = 0;
 	while (i < data->nb_philo)
 	{
-		if ((int)(get_time_difference(data->start_time)
-			- (int)data->philo[i].last_meal) > data->time_to_die)
-			return (1);
 		if (data->philo[i].nb_eat >= data->nb_eat_max)
 			count++;
 		i++;

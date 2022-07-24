@@ -6,7 +6,7 @@
 /*   By: tschlege <tschlege@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 17:45:25 by tschlege          #+#    #+#             */
-/*   Updated: 2022/07/25 00:10:32 by tschlege         ###   ########lyon.fr   */
+/*   Updated: 2022/07/25 00:46:33 by tschlege         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,11 @@ typedef struct timeval	t_time;
 
 typedef struct s_philo
 {
-	pthread_t	thread;
-	int			id;
-	int			nb_eat;
-	int			last_meal;
-	t_data		*data;
+	pthread_t		thread;
+	int				id;
+	int				nb_eat;
+	unsigned int	last_meal;
+	t_data			*data;
 }	t_philo;
 
 typedef struct data
@@ -56,4 +56,5 @@ unsigned int	get_time_difference(struct timeval old_time);
 void			wati_usleep(unsigned int sleep_time);
 int				check_can_eat(t_data *data);
 void			freebox(t_data *data);
+int				check_if_dead(t_data *data);
 #endif

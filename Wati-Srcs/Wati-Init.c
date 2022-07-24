@@ -6,7 +6,7 @@
 /*   By: tschlege <tschlege@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 17:53:58 by tschlege          #+#    #+#             */
-/*   Updated: 2022/07/25 00:10:38 by tschlege         ###   ########lyon.fr   */
+/*   Updated: 2022/07/25 00:55:39 by tschlege         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ int	init_philo(t_data *data)
 	}
 	while (1)
 	{
-		if (data->nb_eat_max != 42)
-			if (!check_can_eat(data))
-				return (0);
+		if ((data->nb_eat_max != -42 && (!check_can_eat(data)))
+			|| !(check_if_dead(data)))
+			return (0);
 	}
 	return (0);
 }
