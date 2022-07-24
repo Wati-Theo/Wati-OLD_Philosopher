@@ -6,7 +6,7 @@
 /*   By: tschlege <tschlege@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 17:45:25 by tschlege          #+#    #+#             */
-/*   Updated: 2022/07/22 18:04:11 by tschlege         ###   ########lyon.fr   */
+/*   Updated: 2022/07/24 14:41:09 by tschlege         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,5 +53,6 @@ void			*sleep_philo(t_philo *philo);
 void			get_time_stamp(void);
 unsigned int	get_time_difference(struct timeval old_time);
 void			wati_usleep(unsigned int sleep_time);
-int				check_can_eat(t_data *data);
+void			check_can_eat(t_data *data);
+void			freebox(t_data *data);
 #endif

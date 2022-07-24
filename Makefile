@@ -1,7 +1,8 @@
 NAME = philo
 
 SRCS =	./Wati-Srcs/Wati-Main.c ./Wati-Srcs/Wati-Parsing.c ./Wati-Srcs/Wati-Utilis.c \
-		./Wati-Srcs/Wati-Init.c ./Wati-Srcs/Wati-Philo.c ./Wati-Srcs/Wati-Time.c
+		./Wati-Srcs/Wati-Init.c ./Wati-Srcs/Wati-Philo.c ./Wati-Srcs/Wati-Time.c	\
+		./Wati-Srcs/Wati-Checks.c
 
 
 OBJS = ${SRCS:.c=.o}
