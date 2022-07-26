@@ -6,7 +6,7 @@
 /*   By: tschlege <tschlege@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 17:45:28 by tschlege          #+#    #+#             */
-/*   Updated: 2022/07/25 01:13:00 by tschlege         ###   ########lyon.fr   */
+/*   Updated: 2022/07/26 10:33:34 by tschlege         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	main(int argc, char *argv[])
 
 	if (argc < 5 || argc > 6)
 	{
-		// printf("ERR, Nb of ARG\n");
+		printf("ERR, Nb of ARG\n");
 		return (1);
 	}
 	data.nb_philo = 0;

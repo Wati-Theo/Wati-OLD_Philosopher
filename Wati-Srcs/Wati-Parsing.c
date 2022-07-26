@@ -6,7 +6,7 @@
 /*   By: tschlege <tschlege@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 17:48:52 by tschlege          #+#    #+#             */
-/*   Updated: 2022/07/25 01:13:12 by tschlege         ###   ########lyon.fr   */
+/*   Updated: 2022/07/26 10:33:49 by tschlege         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,11 @@ void	check_if_valid_nb(int argc, char **argv, t_data *data)
 		if (ft_atoi(argv[i]) > 2147483647 || ft_atoi(argv[i]) < -2147483648
 			|| ft_atoi(argv[i]) < 1)
 		{
-			// printf("Invalid Arg\n");
+			printf("Invalid Arg\n");
 			return ;
 		}
 		i++;
 	}
-	// printf("Parsing OK\n");
 	init_data_and_forchetta(argv, data);
 }
 
@@ -44,7 +43,7 @@ void	check_if_digit(int argc, char **argv, t_data *data)
 		{
 			if (!ft_isdigit(argv[j][i]))
 			{
-				// printf("Invalid Arg\n");
+				printf("Invalid Arg\n");
 				return ;
 			}
 			i++;
