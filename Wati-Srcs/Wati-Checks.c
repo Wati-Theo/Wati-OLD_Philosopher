@@ -6,7 +6,7 @@
 /*   By: tschlege <tschlege@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 17:46:58 by tschlege          #+#    #+#             */
-/*   Updated: 2022/07/25 00:55:52 by tschlege         ###   ########lyon.fr   */
+/*   Updated: 2022/07/26 12:29:48 by tschlege         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,9 +69,6 @@ int	check_nb_eat(t_data *data)
 
 int	check_can_eat(t_data *data)
 {
-	int	i;
-
-	i = 0;
 	if (!check_nb_eat(data))
 	{
 		freebox(data);
