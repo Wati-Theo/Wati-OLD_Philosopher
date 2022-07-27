@@ -6,7 +6,7 @@
 /*   By: tschlege <tschlege@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 17:46:58 by tschlege          #+#    #+#             */
-/*   Updated: 2022/07/27 15:01:26 by tschlege         ###   ########lyon.fr   */
+/*   Updated: 2022/07/27 15:11:58 by tschlege         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	freebox(t_data *data)
 	while (i < data->nb_philo)
 	{
 		pthread_detach(data->philo[i].thread);
+		pthread_join(data->philo[i].thread, NULL);
 		pthread_mutex_destroy(&data->forks[i]);
 		i++;
 	}
