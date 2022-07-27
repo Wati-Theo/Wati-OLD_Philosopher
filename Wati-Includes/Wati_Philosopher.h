@@ -6,7 +6,7 @@
 /*   By: tschlege <tschlege@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 17:45:25 by tschlege          #+#    #+#             */
-/*   Updated: 2022/07/25 00:46:33 by tschlege         ###   ########lyon.fr   */
+/*   Updated: 2022/07/27 14:31:18 by tschlege         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 # include <stdlib.h>
 # include <sys/time.h>
 # include <pthread.h>
+
+# define EAT 3
 
 typedef struct data		t_data;
 typedef struct timeval	t_time;
@@ -41,6 +43,7 @@ typedef struct data
 	int				nb_eat_max;
 	pthread_mutex_t	is_snitching;
 	pthread_mutex_t	*forks;
+	pthread_mutex_t	eat_check;
 	t_philo			*philo;
 	t_time			start_time;
 }	t_data;
@@ -51,10 +54,9 @@ long long int	ft_atoi(const char *str);
 void			init_data_and_forchetta(char *argv[], t_data *data);
 void			*think_philo(void *arg);
 void			*sleep_philo(t_philo *philo);
-void			get_time_stamp(void);
 unsigned int	get_time_difference(struct timeval old_time);
 void			wati_usleep(unsigned int sleep_time);
-int				check_can_eat(t_data *data);
 void			freebox(t_data *data);
 int				check_if_dead(t_data *data);
+int				check_nb_eat(t_data *data);
 #endif

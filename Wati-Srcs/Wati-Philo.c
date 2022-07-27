@@ -6,7 +6,7 @@
 /*   By: tschlege <tschlege@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 19:27:09 by tschlege          #+#    #+#             */
-/*   Updated: 2022/07/26 12:00:07 by tschlege         ###   ########lyon.fr   */
+/*   Updated: 2022/07/27 13:49:56 by tschlege         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	*eat_philo(t_philo *philo)
 		pthread_mutex_lock(&philo->data->forks[philo->id - 2]);
 	snitching(philo, 2);
 	philo->last_meal = get_time_difference(philo->data->start_time);
-	snitching(philo, 3);
+	snitching(philo, EAT);
 	wati_usleep(philo->data->time_to_eat);
 	pthread_mutex_unlock(&philo->data->forks[philo->id - 1]);
 	if (philo->id == 1)
@@ -66,9 +66,11 @@ void	*think_philo(void *arg)
 	t_philo		*philo;
 
 	philo = arg;
-	if (philo->id % 2 == 1 && get_time_difference(philo->data->start_time)
-		< (unsigned int)(philo->data->time_to_die + philo->data->time_to_eat))
-		wati_usleep(10);
 	snitching(philo, 1);
+	if (!(philo->id % 2) && get_time_difference(philo->data->start_time)
+		< (unsigned int)(philo->data->time_to_sleep + philo->data->time_to_eat))
+	{
+		wati_usleep(88);
+	}
 	return (eat_philo(philo));
 }

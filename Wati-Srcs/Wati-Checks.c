@@ -6,7 +6,7 @@
 /*   By: tschlege <tschlege@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 17:46:58 by tschlege          #+#    #+#             */
-/*   Updated: 2022/07/26 12:46:54 by tschlege         ###   ########lyon.fr   */
+/*   Updated: 2022/07/27 15:01:26 by tschlege         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	freebox(t_data *data)
 		pthread_mutex_destroy(&data->forks[i]);
 		i++;
 	}
+	pthread_mutex_destroy(&data->eat_check);
 	pthread_mutex_destroy(&data->is_snitching);
 }
 
@@ -58,21 +59,13 @@ int	check_nb_eat(t_data *data)
 	count = 0;
 	while (i < data->nb_philo)
 	{
+		pthread_mutex_lock(&data->eat_check);
 		if (data->philo[i].nb_eat >= data->nb_eat_max)
 			count++;
 		i++;
+		pthread_mutex_unlock(&data->eat_check);
 	}
 	if (count != data->nb_philo)
 		return (1);
 	return (0);
-}
-
-int	check_can_eat(t_data *data)
-{
-	if (!check_nb_eat(data))
-	{
-		freebox(data);
-		return (0);
-	}
-	return (1);
 }
