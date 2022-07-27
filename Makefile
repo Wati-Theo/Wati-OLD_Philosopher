@@ -13,7 +13,7 @@ CC  = gcc
 
 RM  = rm -f
 
-CFLAGS = -Wall -Wextra -Werror -I ./includes -g
+CFLAGS = -fsanitize=thread -g3 -Wall -Wextra -Werror -I ./includes -g
 
 all:		$(NAME)
 

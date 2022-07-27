@@ -6,7 +6,7 @@
 /*   By: tschlege <tschlege@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 17:45:25 by tschlege          #+#    #+#             */
-/*   Updated: 2022/07/27 14:31:18 by tschlege         ###   ########lyon.fr   */
+/*   Updated: 2022/07/27 20:07:24 by tschlege         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void			init_data_and_forchetta(char *argv[], t_data *data);
 void			*think_philo(void *arg);
 void			*sleep_philo(t_philo *philo);
 unsigned int	get_time_difference(struct timeval old_time);
-void			wati_usleep(unsigned int sleep_time);
+void			wati_usleep(t_data *data, unsigned int sleep_time);
 void			freebox(t_data *data);
 int				check_if_dead(t_data *data);
 int				check_nb_eat(t_data *data);

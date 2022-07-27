@@ -6,19 +6,21 @@
 /*   By: tschlege <tschlege@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 16:59:41 by tschlege          #+#    #+#             */
-/*   Updated: 2022/07/27 14:20:17 by tschlege         ###   ########lyon.fr   */
+/*   Updated: 2022/07/27 20:10:45 by tschlege         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Wati-Includes/Wati_Philosopher.h"
 
-void	wati_usleep(unsigned int sleep_time)
+void	wati_usleep(t_data *data, unsigned int sleep_time)
 {
 	struct timeval	s_start_time;
+	int				sleep;
 
+	sleep = data->nb_philo * 0.5;
 	gettimeofday(&s_start_time, NULL);
 	while (sleep_time > get_time_difference(s_start_time))
-		usleep(200);
+		usleep(800);
 }
 
 unsigned int	get_time_difference(struct timeval old_time)

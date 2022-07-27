@@ -6,7 +6,7 @@
 /*   By: tschlege <tschlege@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 17:53:58 by tschlege          #+#    #+#             */
-/*   Updated: 2022/07/27 15:03:17 by tschlege         ###   ########lyon.fr   */
+/*   Updated: 2022/07/27 21:32:19 by tschlege         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,12 @@ int	init_philo(t_data *data)
 		return (0);
 	while (i < data->nb_philo)
 	{
-		pthread_create(&data->philo[i].thread, NULL,
-			&think_philo, &data->philo[i]);
 		data->philo[i].data = data;
 		data->philo[i].id = i + 1;
-		data->philo->nb_eat = 0;
-		data->philo->last_meal = 0;
+		data->philo[i].nb_eat = 0;
+		data->philo[i].last_meal = 0;
+		pthread_create(&data->philo[i].thread, NULL,
+			&think_philo, &data->philo[i]);
 		usleep(30);
 		i++;
 	}

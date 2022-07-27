@@ -1,6 +1,7 @@
 {
 	"files.associations": {
 		"types.h": "c",
-		"time.h": "c"
+		"time.h": "c",
+		"wati_philosopher.h": "c"
 	}
 }
