@@ -6,7 +6,7 @@
 /*   By: tschlege <tschlege@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 17:46:58 by tschlege          #+#    #+#             */
-/*   Updated: 2022/07/27 20:42:42 by tschlege         ###   ########lyon.fr   */
+/*   Updated: 2022/07/28 15:09:26 by tschlege         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int	check_if_dead(t_data *data)
 	int	i;
 
 	i = 0;
+	pthread_mutex_lock(&data->last_meal_security);
 	while (i < data->nb_philo)
 	{
 		if ((get_time_difference(data->start_time)
@@ -44,10 +45,12 @@ int	check_if_dead(t_data *data)
 			printf("%d %d died\n",
 				get_time_difference(data->start_time), i + 1);
 			pthread_mutex_unlock(&data->is_snitching);
+			freebox(data);
 			return (0);
 		}
 		i++;
 	}
+	pthread_mutex_unlock(&data->last_meal_security);
 	return (1);
 }
 
@@ -68,5 +71,6 @@ int	check_nb_eat(t_data *data)
 	}
 	if (count != data->nb_philo)
 		return (1);
+	freebox(data);
 	return (0);
 }

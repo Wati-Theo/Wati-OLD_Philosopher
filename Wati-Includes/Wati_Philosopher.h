@@ -6,7 +6,7 @@
 /*   By: tschlege <tschlege@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 17:45:25 by tschlege          #+#    #+#             */
-/*   Updated: 2022/07/27 20:07:24 by tschlege         ###   ########lyon.fr   */
+/*   Updated: 2022/07/28 13:53:29 by tschlege         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ typedef struct data
 	int				nb_eat_max;
 	pthread_mutex_t	is_snitching;
 	pthread_mutex_t	*forks;
+	pthread_mutex_t	last_meal_security;
 	pthread_mutex_t	eat_check;
 	t_philo			*philo;
 	t_time			start_time;
