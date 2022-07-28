@@ -6,7 +6,7 @@
 /*   By: tschlege <tschlege@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 17:46:58 by tschlege          #+#    #+#             */
-/*   Updated: 2022/07/28 15:09:26 by tschlege         ###   ########lyon.fr   */
+/*   Updated: 2022/07/28 18:14:29 by tschlege         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	freebox(t_data *data)
 		pthread_mutex_destroy(&data->forks[i]);
 		i++;
 	}
+	pthread_mutex_unlock(&data->is_snitching);
 	pthread_mutex_destroy(&data->eat_check);
 	pthread_mutex_destroy(&data->is_snitching);
 }
@@ -44,7 +45,6 @@ int	check_if_dead(t_data *data)
 			pthread_mutex_lock(&data->is_snitching);
 			printf("%d %d died\n",
 				get_time_difference(data->start_time), i + 1);
-			pthread_mutex_unlock(&data->is_snitching);
 			freebox(data);
 			return (0);
 		}

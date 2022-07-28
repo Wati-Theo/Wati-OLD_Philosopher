@@ -6,7 +6,7 @@
 /*   By: tschlege <tschlege@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 16:59:41 by tschlege          #+#    #+#             */
-/*   Updated: 2022/07/28 17:54:30 by tschlege         ###   ########lyon.fr   */
+/*   Updated: 2022/07/28 18:09:24 by tschlege         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	wati_usleep(t_data *data, unsigned int sleep_time)
 	sleep = data->nb_philo * 0.5;
 	gettimeofday(&s_start_time, NULL);
 	while (sleep_time > get_time_difference(s_start_time))
-		usleep(1000);
+		usleep(60);
 }
 
 unsigned int	get_time_difference(struct timeval old_time)
